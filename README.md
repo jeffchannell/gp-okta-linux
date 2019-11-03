@@ -35,5 +35,5 @@ If not, well... here's what the script _does_.
 
 ## Known Issues
 
-CentOS 8 almost works, but DNS seems to be an issue.
-
+* CentOS 8 almost works, but DNS seems to be an issue.
+* No NetworkManager integration yet, and it doesn't look good.
