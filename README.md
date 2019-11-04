@@ -23,7 +23,7 @@ That's it.
 
 ## Connection
 
-Again, if your system is script-friendly, just run `gp-okta.sh` and magic should happen.
+Again, if your system is script-friendly, just run `start.sh` and magic should happen.
 
 If not, well... here's what the script _does_.
 
@@ -37,3 +37,4 @@ If not, well... here's what the script _does_.
 
 * CentOS 8 almost works, but DNS seems to be an issue.
 * No NetworkManager integration yet, and it doesn't look good.
+* Permissions aren't handled very well yet, so running via terminal is required.
