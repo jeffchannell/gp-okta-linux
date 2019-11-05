@@ -81,9 +81,7 @@ function is_running()
 
 function run(cmd)
 {
-    let ret = GLib.spawn_command_line_sync(cmd);
-    global.log(ret);
-    return ret[1].toString();
+    return GLib.spawn_command_line_sync(cmd)[1].toString();
 }
 
 function run_local(cmd)
