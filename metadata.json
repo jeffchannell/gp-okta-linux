@@ -3,6 +3,6 @@
     "name": "GP Okta Linux",
     "description": "A GlobalProtect VPN with Okta 2FA indicator applet for Gnome Shell",
     "url": "https://github.com/jeffchannell/gp-okta-linux",
-    "shell-version": [ "3.28.4" ],
+    "shell-version": [ "3.28.3" ],
     "version": "0.0.1"
 }
