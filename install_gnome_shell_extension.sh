@@ -14,5 +14,6 @@ if ! [[ $(command -v "gnome-extensions") = "" ]]; then
         mkdir -p "${exts}" > /dev/null 2>&1
         ln -s "${DIR}" "${exts}/${ext}"
         gnome-extensions enable "${ext}"
+        killall -3 gnome-shell
     fi
 fi
