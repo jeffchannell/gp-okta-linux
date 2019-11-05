@@ -5,5 +5,5 @@
 set -e
 
 if [ -f /var/run/gp-okta.pid ]; then
-    sudo kill "$(cat /var/run/gp-okta.pid)"
+    pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY kill "$(cat /var/run/gp-okta.pid)"
 fi

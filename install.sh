@@ -12,7 +12,7 @@ fi
 
 function install_conf {
     if [ ! -f /etc/gp-okta.conf ]; then
-        echo 'export VPN_SERVER=' > /etc/gp-okta.conf
+        echo "export VPN_SERVER=${1}" > /etc/gp-okta.conf
     fi
 }
 
@@ -35,6 +35,9 @@ function install_hipreport {
         chmod +x "${HIPREPORT_SCRIPT}"
     fi
 }
+
+# read desired VPN server here
+# TODO
 
 # ubuntu
 if ! [[ $(command -v "apt") = "" ]]; then

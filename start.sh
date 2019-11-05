@@ -33,7 +33,7 @@ fi
 COOKIE=
 eval $( "/opt/gp-saml-gui/gp-saml-gui.py" -v "${VPN_SERVER}" )
 if ! [[ "${COOKIE}" = "" ]]; then
-    echo "${COOKIE}" | sudo openconnect \
+    echo "${COOKIE}" | pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY openconnect \
         --protocol=gp \
         --user="${USER}" \
         --usergroup=gateway:prelogin-cookie \
