@@ -37,7 +37,24 @@ function install_hipreport {
 }
 
 # read desired VPN server here
-# TODO
+VPN_SERVER_ATTEMPTS=3
+VPN_SERVER=
+if [ -f /etc/gp-okta.conf ]; then
+    source /etc/gp-okta.conf
+fi
+while [ "" = "${VPN_SERVER}" ]; do
+    read -p "VPN Server: " VPN_SERVER
+    if [ "" = "${VPN_SERVER}" ]; then
+        VPN_SERVER_ATTEMPTS=$(($VPN_SERVER_ATTEMPTS-1))
+    fi
+    if [ 0 = $VPN_SERVER_ATTEMPTS ]; then
+        exit 1
+    fi
+done
+
+if [ "" = "${VPN_SERVER}" ]; then
+    >&2 echo "VPN Server not set. Edit /etc/gp-okta.conf before starting VPN."
+fi
 
 # ubuntu
 if ! [[ $(command -v "apt") = "" ]]; then
@@ -46,7 +63,7 @@ if ! [[ $(command -v "apt") = "" ]]; then
         git wget openconnect \
         python3-gi gir1.2-gtk-3.0 gir1.2-webkit2-4.0 \
         python-lxml python-requests
-    install_conf
+    install_conf "${VPN_SERVER}"
     install_hipreport
     install_gp_saml_gui
 # centos
@@ -55,7 +72,7 @@ elif ! [[ $(command -v "yum") = "" ]]; then
     yum -y install epel-release
     yum -y install openconnect vpnc-script
     yum -y install git
-    install_conf
+    install_conf "${VPN_SERVER}"
     install_hipreport
     install_gp_saml_gui
 # unknown
