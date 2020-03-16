@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Tested on Xubuntu 19.10 and CentOS 8
+# Tested on Xubuntu 19.10, CentOS 8 and OpenSUSE Tumbleweed
 
 set -e
 
@@ -23,7 +23,11 @@ function install_gp_saml_gui {
 }
 
 function install_hipreport {
-    HIPREPORT_SRC='https://raw.githubusercontent.com/dlenski/openconnect/master/hipreport.sh'
+    # We are not using the master branch because the project was deprecated.
+    # This is the most recent version of the hipreport.sh file.
+    # TODO: We should review how to procceed once this project has been
+    # deprecated. Maybe add this hipreport to our project.
+    HIPREPORT_SRC='https://raw.githubusercontent.com/dlenski/openconnect/034dba1b6e365e76aa1b05f6a0f6f0fcd206e38f/hipreport.sh'
     HIPREPORT_SCRIPT=/usr/libexec/openconnect/hipreport.sh
     # mkdir for sources, if not available
     if [ ! -d /usr/libexec/openconnect ]; then
