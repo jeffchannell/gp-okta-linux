@@ -60,8 +60,19 @@ if [ "" = "${VPN_SERVER}" ]; then
     >&2 echo "VPN Server not set. Edit /etc/gp-okta.conf before starting VPN."
 fi
 
+# OpenSUSE distribution. Keep this if block as the first one
+# because OpenSUSE often creates a link for 'apt' command pointing to
+# zypper. It would fall into the Ubuntu 'if' block below by mistake.
+if ! [[ $(command -v "zypper") = "" ]]; then
+    zypper refresh
+    zypper install --no-confirm \
+           git wget openconnect python3-gobject python3-lxml python3-requests
+    install_conf "${VPN_SERVER}"
+    install_hipreport
+    install_gp_saml_gui
+
 # ubuntu
-if ! [[ $(command -v "apt") = "" ]]; then
+elif ! [[ $(command -v "apt") = "" ]]; then
     apt update
     apt -y install \
         git wget openconnect \
@@ -70,6 +81,7 @@ if ! [[ $(command -v "apt") = "" ]]; then
     install_conf "${VPN_SERVER}"
     install_hipreport
     install_gp_saml_gui
+
 # centos
 elif ! [[ $(command -v "yum") = "" ]]; then
     yum -y update
@@ -79,8 +91,9 @@ elif ! [[ $(command -v "yum") = "" ]]; then
     install_conf "${VPN_SERVER}"
     install_hipreport
     install_gp_saml_gui
+
 # unknown
 else
-    >&2 echo "You are not running a Debian/Red Hat derivative. Sorry."
+    >&2 echo "You are not running a Debian/Red Hat/OpenSUSE derivative. Sorry."
     exit 1
 fi
