@@ -4,7 +4,7 @@ Need to connect your Linux desktop to a GlobalProtect VPN, but your company uses
 
 ## "Supported" Distros
 
-This script was tested on Xubuntu 19.10 and CentOS 8. Only Xubuntu "works" but CentOS 8 is nearly working. This is all unsupported. YMMV.
+This script was tested on Xubuntu 19.10, CentOS 8 and OpenSUSE Tumbleweed. Only Xubuntu and OpenSUSE "works" but CentOS 8 is nearly working. This is all unsupported. YMMV.
 
 ## Installation
 
@@ -44,3 +44,4 @@ Run `stop.sh`. Or kill the running openconnect process. Whatever.
 * CentOS 8 almost works, but DNS is to be an issue. I don't know why.
 * No NetworkManager integration yet, and it doesn't look good.
 * Some Gnome Shell installations may require gnome-tweaks to actually enable the indicator applet.
+* If you use i3wm as your window manager, please make sure to run `pkttyagent --process $$ &` before calling `openconnect` command inside either `start.sh` and `stop.sh` files.  
