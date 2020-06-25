@@ -12,17 +12,17 @@ if ! [[ $(command -v "gnome-extensions") = "" ]]; then
     echo "Installing Gnome Extension to ${exts}"
     if [ ! -d "${exts}" ]; then
         mkdir -p "${exts}" > /dev/null 2>&1
-        ln -s "${DIR}" "${exts}/${ext}"
-        gnome-extensions enable "${ext}"
-        killall -3 gnome-shell
     fi
+    ln -s "${DIR}" "${exts}/${ext}"
+    gnome-extensions enable "${ext}"
+    killall -3 gnome-shell
 elif ! [[ $(command -v "gnome-shell-extension-tool") = "" ]]; then
     ext="gp-okta-linux@jeffchannell.com"
     exts="${HOME}/.local/share/gnome-shell/extensions"
     echo "Installing Gnome Extension to ${exts}"
     if [ ! -d "${exts}" ]; then
         mkdir -p "${exts}" > /dev/null 2>&1
-        ln -s "${DIR}" "${exts}/${ext}"
-        gnome-shell-extension-tool -e "${ext}"
     fi
+    ln -s "${DIR}" "${exts}/${ext}"
+    gnome-shell-extension-tool -e "${ext}"
 fi

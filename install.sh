@@ -62,7 +62,7 @@ if ! [[ $(command -v "apt") = "" ]]; then
     apt -y install \
         git wget openconnect \
         python3-gi gir1.2-gtk-3.0 gir1.2-webkit2-4.0 \
-        python-lxml python-requests
+        python3-lxml python3-requests
     install_conf "${VPN_SERVER}"
     install_hipreport
     install_gp_saml_gui
